@@ -46,7 +46,7 @@ const userController = {
 
     updateUser({params, body}, res) {
         User.findByIdAndUpdate(
-            {id: params.id}, 
+            params.id, 
             body, 
             {new: true, runValidators: true}
         ).then(userData => {
@@ -60,7 +60,7 @@ const userController = {
     },
 
     deleteUser({params}, res) {
-        User.findByIdAndDelete({id: params.id})
+        User.findByIdAndDelete(params.id)
         .then(userData => {
             if (!userData) {
                 res.status(404).json({ message: 'No user found with this id!' });
@@ -69,6 +69,40 @@ const userController = {
             res.json(userData);
         })
         .catch(err => res.status(400).json(err));
+    },
+
+    addFriend({params}, res) {
+        User.findByIdAndUpdate(
+            params.userId,
+            {$addToSet: {friends: params.friendId}},
+            {new: true, runValidators: true}
+        ).then(userData => {
+            if(!userData) {
+                res.status(404).json({ message: 'No user found with this id!' });
+                return;
+            }
+            res.json(userData)
+        })
+        .catch(err => res.status(400).json(err))
+    },
+
+    deleteFriend({params}, res) {
+        User.findByIdAndUpdate(
+            params.UserId,
+            {$pull: {friends: params.friendId}},
+            {new: true, runValidators: true}
+        ).then(userData => {
+            //if no pizza is found send 404 error
+            if(!userData) {
+                res.status(404).json({ message: 'No user found with this id!' });
+                return;
+            }
+            res.json(userData)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
     }
 }
 
