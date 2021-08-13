@@ -61,7 +61,7 @@ const thoughtController = {
     },
 
     deleteThought({params}, res) {
-        Thought.findByIdAndDelete(params.id)
+        Thought.findByIdAndDelete(params.thoughtId)
         .then(thoughtData => {
            if(!thoughtData) {
             res.status(404).json({ message: 'No thought found with this id!' });
@@ -96,7 +96,10 @@ const thoughtController = {
             }
             res.json(thoughtData);
         })
-        .catch(err => res.json(err));
+        .catch(err => {
+            console.log(err)
+            res.json(err)
+        });
     },
 
     deleteReaction({params, body}, res) {
