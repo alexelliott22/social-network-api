@@ -29,7 +29,7 @@ const thoughtController = {
         Thought.create(body)
         .then(({_id}) => {
             return User.findByIdAndUpdate(
-                body.userId,
+                params.userId,
                 {$addToSet: {thoughts: _id}},
                 {new: true, runValidators: true}
             )
@@ -68,7 +68,7 @@ const thoughtController = {
             return;
            }
            return User.findByIdAndUpdate(
-                thoughtData.userId,
+                params.userId,
                 {$pull: {thoughts: params.id}},
                 {new: true}
             )
