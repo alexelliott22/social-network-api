@@ -1,11 +1,29 @@
-# social-network-api
+  # Social Network API
 
-GIVEN a social network API
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-WHEN I open API GET routes in Insomnia Core for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-WHEN I test API POST and DELETE routes in Insomnia Core
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+  ## Description
+  This project built an api system for a social network site that allows for users to be created, add other users as friends, create posts, and add reactions to those posts.
+
+  ## Github link
+  <https://github.com/alexelliott22/social-network-api>
+
+
+  ## Walkthrough Video
+  [Walkthrough video](https://drive.google.com/file/d/1zKCPqC0CqPPeYD8RVHD1pW4iC3FrsEvv/view?usp=sharing)
+
+  ## Table of Contents
+
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Contributing](#contributing)
+
+  ## Installation
+
+  To install the necessary dependencies run the following command:
+  npm i, npm i express, npm i mongoose
+
+  ## Usage
+
+  This is only a backend application so there are is no front end functionality yet.
+
+  ## Questions 
+  If you have any questions about the repo, open an issue, or contact me directly at <alexelliott22@gmail.com>. You can find more of my work at <https://github.com/alexelliott22>.
