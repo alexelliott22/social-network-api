@@ -10,10 +10,12 @@ const ReactionSchema = new Schema(
         reactionBody: {
             type: String,
             required: 'Please enter a reaction!',
+            trim: true,
             maxLength: [280, 'You cannot enter more than 280 characters!']
         },
         username: {
             type: String,
+            trim: true,
             required: 'Please enter a username'
         },
         createdAt: {

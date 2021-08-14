@@ -86,7 +86,7 @@ const thoughtController = {
     addReaction({params, body}, res) {
         Thought.findByIdAndUpdate(
             params.thoughtId,
-            {$addToSet: {reactions: body}},
+            {$push: {reactions: body}},
             {new: true, runValidators: true}
         )
         .then(thoughtData => {
@@ -94,6 +94,7 @@ const thoughtController = {
                 res.status(404).json({ message: 'No thought found with this id!' });
                 return;
             }
+
             res.json(thoughtData);
         })
         .catch(err => {
