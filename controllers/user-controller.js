@@ -88,7 +88,7 @@ const userController = {
 
     deleteFriend({params}, res) {
         User.findByIdAndUpdate(
-            params.UserId,
+            params.userId,
             {$pull: {friends: params.friendId}},
             {new: true, runValidators: true}
         ).then(userData => {

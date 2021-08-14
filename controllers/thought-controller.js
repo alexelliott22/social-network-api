@@ -69,7 +69,7 @@ const thoughtController = {
            }
            return User.findByIdAndUpdate(
                 params.userId,
-                {$pull: {thoughts: params.id}},
+                {$pull: {thoughts: params.thoughtId}},
                 {new: true}
             )
         })
